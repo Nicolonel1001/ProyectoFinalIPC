@@ -16,14 +16,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="579.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.RegisterController">
+<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="579.0" prefWidth="751.0" style="-fx-background-color: lightgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.RegisterController">
    <children>
       <VBox layoutX="103.0" layoutY="97.0" prefHeight="420.0" prefWidth="349.0" spacing="10.0" AnchorPane.leftAnchor="103.0">
          <children>
             <HBox prefHeight="70.0" prefWidth="200.0" spacing="100.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
-                  <TextField id="Nombre" fx:id="Nombre" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="166.0">
+                  <TextField id="Nombre" fx:id="Nombre" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="171.0">
                      <HBox.margin>
                         <Insets left="50.0" />
                      </HBox.margin>
