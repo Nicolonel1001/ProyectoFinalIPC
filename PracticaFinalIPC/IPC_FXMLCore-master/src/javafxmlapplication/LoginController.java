@@ -68,7 +68,7 @@ public class LoginController implements Initializable {
             FXMLLoader fxmlloader = new FXMLLoader();
             
                 try {
-                    Pane root = fxmlloader.load(getClass().getResource("Login.fxml"));
+                    Pane root = fxmlloader.load(getClass().getResource("Inicio.fxml"));
                     stage.setScene(new Scene(root, 600, 600));
                     stage.show();
                 } catch (IOException ex) {

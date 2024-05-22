@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="579.0" prefWidth="751.0" style="-fx-background-color: lightgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.RegisterController">
+<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="579.0" prefWidth="751.0" style="-fx-background-color: lightgreen;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.RegisterController">
    <children>
       <VBox layoutX="103.0" layoutY="97.0" prefHeight="420.0" prefWidth="349.0" spacing="10.0" AnchorPane.leftAnchor="103.0">
          <children>
@@ -72,7 +72,7 @@
                            <graphic>
                               <ImageView fx:id="profilePicture" fitHeight="85.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../profile_pictures/noPicture.jpg" />
+                                    <Image url="@Imagenes/nopp.jpg" />
                                  </image>
                               </ImageView>
                            </graphic>

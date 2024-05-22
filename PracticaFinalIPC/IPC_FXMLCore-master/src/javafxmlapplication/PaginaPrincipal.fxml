@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightgreen;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.PaginaPrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightgreen;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.PaginaPrincipalController">
     <stylesheets>
         <URL value="@paginaprincipal.css" />
     </stylesheets>
@@ -24,8 +24,8 @@
             <ColorAdjust />
          </effect>
       </TextField>
-      <Button contentDisplay="BOTTOM" layoutX="338.0" layoutY="10.0" mnemonicParsing="false" text="Iniciar seción" />
-      <Button layoutX="456.0" layoutY="10.0" mnemonicParsing="false" text="Demo gratuita" />
+      <Button contentDisplay="BOTTOM" layoutX="338.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToLogin" text="Iniciar seción" />
+      <Button layoutX="456.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToRegister" text="Demo gratuita" />
       <Text accessibleRole="CONTEXT_MENU" layoutX="260.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ESPAÑA" wrappingWidth="66.00000298023224" />
       <ImageView fitHeight="282.0" fitWidth="329.0" layoutX="26.0" layoutY="66.0">
          <image>
