@@ -9,7 +9,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -23,11 +22,6 @@
             <HBox prefHeight="70.0" prefWidth="200.0" spacing="100.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
-                  <TextField id="Nombre" fx:id="Nombre" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="171.0">
-                     <HBox.margin>
-                        <Insets left="50.0" />
-                     </HBox.margin>
-                  </TextField>
                </children>
             </HBox>
             <HBox prefHeight="70.0" prefWidth="200.0" spacing="100.0">
@@ -61,24 +55,6 @@
                         <Insets left="45.0" />
                      </HBox.margin>
                   </TextField>
-               </children>
-            </HBox>
-            <HBox prefHeight="70.0" prefWidth="200.0" spacing="100.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Foto de perfil" />
-                  <FlowPane alignment="CENTER" columnHalignment="RIGHT" prefHeight="200.0" prefWidth="200.0" rowValignment="TOP">
-                     <children>
-                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#changeProfilePicture">
-                           <graphic>
-                              <ImageView fx:id="profilePicture" fitHeight="85.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../profile_pictures/noPicture.jpg" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </FlowPane>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
