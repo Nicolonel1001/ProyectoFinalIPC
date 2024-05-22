@@ -5,14 +5,14 @@
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightgreen;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.PaginaPrincipalController">
     <stylesheets>
@@ -24,32 +24,68 @@
             <ColorAdjust />
          </effect>
       </TextField>
-      <Button contentDisplay="BOTTOM" layoutX="338.0" layoutY="10.0" mnemonicParsing="false" text="Iniciar seción" />
-      <Button layoutX="456.0" layoutY="10.0" mnemonicParsing="false" text="Demo gratuita" />
-      <Text accessibleRole="CONTEXT_MENU" layoutX="260.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ESPAÑA" wrappingWidth="66.00000298023224" />
-      <ImageView fitHeight="282.0" fitWidth="329.0" layoutX="26.0" layoutY="66.0">
-         <image>
-            <Image url="@../../../../../../../Downloads/imagen%201.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="54.0" layoutX="164.0" layoutY="7.0">
-         <image>
-            <Image url="@../../../../../../../Downloads/dolar.png" />
-         </image>
-      </ImageView>
+      <Button contentDisplay="BOTTOM" layoutX="356.0" layoutY="10.0" mnemonicParsing="false" text="Iniciar sesión" />
+      <Button layoutX="477.0" layoutY="10.0" mnemonicParsing="false" text="Registarse" />
       <ButtonBar layoutX="356.0" layoutY="138.0" prefHeight="40.0" prefWidth="200.0">
          <buttons>
             <Accordion />
             <Accordion />
          </buttons>
       </ButtonBar>
-      <HBox layoutX="356.0" layoutY="75.0" prefHeight="282.0" prefWidth="214.0">
+      <ImageView fitHeight="40.0" fitWidth="44.0" layoutX="172.0" layoutY="6.0">
+         <image>
+            <Image url="@../../../../../../../Downloads/euros.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="28.0" fitWidth="26.0" layoutX="322.0" layoutY="12.0">
+         <image>
+            <Image url="@../Imagenes/Iconos/global.png" />
+         </image>
+      </ImageView>
+      <HBox layoutX="28.0" layoutY="62.0" prefHeight="244.0" prefWidth="292.0">
          <children>
-            <TextArea prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: lightgrenn;" text="Encuentra Todos Los&#10;Beneficios en en solo &#10;Lugar ">
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" />
+            <ImageView fitHeight="226.0" fitWidth="292.0">
+               <image>
+                  <Image url="@../Imagenes/Pictures/imagen%201.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <MenuButton layoutX="234.0" layoutY="12.0" mnemonicParsing="false" popupSide="TOP" prefHeight="28.0" prefWidth="87.0" style="-fx-background-color: lightgreen;" text="ESPAÑA" textOverrun="WORD_ELLIPSIS">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+      </MenuButton>
+      <HBox layoutX="28.0" layoutY="293.0" prefHeight="100.0" prefWidth="265.0">
+         <children>
+            <ImageView fitHeight="31.0" fitWidth="30.0">
+               <image>
+                  <Image url="@../Imagenes/Iconos/manzana.png" />
+               </image>
                <HBox.margin>
-                  <Insets bottom="120.0" top="50.0" />
+                  <Insets left="15.0" top="30.0" />
                </HBox.margin>
-            </TextArea>
+            </ImageView>
+            <Button mnemonicParsing="false" style="-fx-background-color: black;" text="AppStore">
+               <HBox.margin>
+                  <Insets top="30.0" />
+               </HBox.margin>
+            </Button>
+            <ImageView fitHeight="28.0" fitWidth="36.0">
+               <image>
+                  <Image url="@../Imagenes/Iconos/google-play.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="20.0" right="-40.0" top="30.0" />
+               </HBox.margin>
+            </ImageView>
+            <Button mnemonicParsing="false" style="-fx-background-color: black;" text="GooglePlay">
+               <HBox.margin>
+                  <Insets left="40.0" top="30.0" />
+               </HBox.margin>
+            </Button>
          </children>
       </HBox>
    </children>
