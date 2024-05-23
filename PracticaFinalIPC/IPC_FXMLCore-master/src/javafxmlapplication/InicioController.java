@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -22,6 +23,9 @@ import javafx.stage.Stage;
  * @author nicon
  */
 public class InicioController implements Initializable {
+
+    @FXML
+    private Button botonVerGastos;
 
     /**
      * Initializes the controller class.
@@ -44,6 +48,19 @@ public class InicioController implements Initializable {
         //la ventana se muestra modal
         stage.show();
         
+    }
+
+    @FXML
+    private void onShowExpense(ActionEvent event) throws IOException {
+        FXMLLoader loader= new  FXMLLoader(getClass().getResource("Mostrar.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root, 600, 400);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Mostrar gastos");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        //la ventana se muestra modal
+        stage.show();
     }
     
 }

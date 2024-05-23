@@ -57,7 +57,21 @@ public class AnadirController implements Initializable {
     }
 
     @FXML
-    private void onAddExpense(ActionEvent event) {
+    private void onAddExpense(ActionEvent event) throws IOException {
+        FXMLLoader loader= new  FXMLLoader(getClass().getResource("AnadirGasto.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root, 300, 300);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Anadir una gasto");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        //la ventana se muestra modal
+        stage.showAndWait();
+            
+        Stage currentStage = (Stage) cancelButton.getScene().getWindow();
+        currentStage.close();
+
+        stage.close();
     }
     
 }

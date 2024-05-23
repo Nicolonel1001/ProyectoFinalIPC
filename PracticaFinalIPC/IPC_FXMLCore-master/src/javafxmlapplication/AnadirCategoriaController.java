@@ -55,12 +55,21 @@ public class AnadirCategoriaController implements Initializable {
     @FXML
     private void onCrear(ActionEvent event) throws AcountDAOException {
     
+        boolean valid = true;
+        
         String nombre = categoryName.getText().strip();
         String descripcion = categoryDescription.getText().strip();
         
-        boolean success = acount.registerCategory(nombre, descripcion);
+        if (nombre.isBlank())
+            valid = false;
         
-        if(success) {
+        if (descripcion.isBlank())
+            valid = false;
+        
+        if(valid)
+            valid = acount.registerCategory(nombre, descripcion);
+        
+        if(valid) {
             Stage stage = (Stage) this.categoryName.getScene().getWindow();
             stage.close();
         } else {

@@ -4,6 +4,7 @@
  */
 package javafxmlapplication;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -45,24 +46,12 @@ public class RegisterController implements Initializable {
     private TextField Nombre;
     @FXML
     private TextField Nickname;
-    @FXML
     private ImageView profilePicture;
     
     private boolean validated = false;
     @FXML
     private Text textoDeError;
-    @FXML
-    private GridPane picturesPane;
-    @FXML
-    private Button botonArdilla;
-    @FXML
-    private Button botonLeon;
-    @FXML
-    private Button botonElefante;
-    @FXML
-    private Button botonZebra;
-
-    
+  
     /**
      * Initializes the controller class.
      */
@@ -86,7 +75,8 @@ public class RegisterController implements Initializable {
         String password = Password.getText().strip();
         String correo = Correo.getText().strip();
         LocalDate date = LocalDate.now();
-        Image image = profilePicture.getImage();
+        File file = new File("C:\\Users\\nicon\\Desktop\\ProyectoFinalIPC\\PracticaFinalIPC\\IPC_FXMLCore-master\\src\\Imagenes\\Iconos\\nopp.jpg");
+        Image image = new Image(file.toURI().toString());
         
         textoDeError.setText("");
         validated = false;
@@ -126,7 +116,6 @@ public class RegisterController implements Initializable {
     
     }
 
-    @FXML
     private void changeProfilePicture(ActionEvent event) {
     //TODO
     System.out.println("change profile picture");
