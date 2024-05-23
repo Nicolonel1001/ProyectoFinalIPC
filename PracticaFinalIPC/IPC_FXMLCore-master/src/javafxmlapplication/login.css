@@ -2,6 +2,47 @@
  * Empty Stylesheet file.
  */
 
+.root{
+    -fx-margin: 0;
+    -fx-padding: 0;
+    -fx-background-color:linear-gradient(from 0% 0% to 100% 100%, #6C3483, #58D68D);
+}
+
+
+#P1 {
+    -fx-border-color: dodgerblue;
+    -fx-border-width: 3px;
+    -fx-border-radius: 4px;
+    -fx-font: large Verdana,sans-serif;
+    -fx-letter-spacing: 1px;
+    
+}
+
+ passwordField:after{
+    content: "michigan"; 
+}
+
+#P2 {
+    -fx-border-color: dodgerblue;
+    -fx-border-width: 3px;
+    -fx-border-radius: 4px;
+    -fx-font: large Verdana,sans-serif;
+    -fx-letter-spacing: 1px;
+}
+
+#T1{
+    -fx-font-size: 22px;
+}
+
+#T2{
+    -fx-font-size: 22px;
+}
+#T11{
+    -fx-text-aling: center;
+    -fx-padding: 0 0 20px 0;
+    -fx-border-bottom: 1px solid silver;
+    -fx-font-size: 26px;
+}
 .mainFxmlClass {
     
 }
