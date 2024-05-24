@@ -136,6 +136,7 @@ public class RegisterController implements Initializable {
         alert.setContentText("You now have to login to use the application !");
         alert.showAndWait();
         
+        
         try {
             Stage currentStage = (Stage)textoDeError.getScene().getWindow();
             currentStage.close();

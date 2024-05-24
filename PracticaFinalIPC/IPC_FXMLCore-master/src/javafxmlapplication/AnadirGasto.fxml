@@ -32,5 +32,6 @@
       <DatePicker fx:id="dateField" layoutX="268.0" layoutY="298.0" onAction="#getDate" promptText="Elegir fecha" />
       <MenuButton fx:id="categoryField" layoutX="268.0" layoutY="331.0" mnemonicParsing="false" />
       <Label fx:id="l1" layoutX="342.0" layoutY="35.0" textFill="#ff0303" />
+      <Button fx:id="botonAddCategory" layoutX="471.0" layoutY="298.0" mnemonicParsing="false" onAction="#onAddCategory" text="Anadir Categoria" />
    </children>
 </AnchorPane>

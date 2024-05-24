@@ -13,10 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
@@ -25,19 +22,18 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Acount;
 import model.AcountDAOException;
 import model.Category;
+import model.Charge;
 
 /**
  * FXML Controller class
  *
  * @author nicon
  */
-public class AnadirGastoController implements Initializable {
+public class ModificarGastoController implements Initializable {
 
     @FXML
     private TextField nameField;
@@ -47,27 +43,20 @@ public class AnadirGastoController implements Initializable {
     private TextField costField;
     @FXML
     private TextField unitsField;
-    
-    private Acount acount;
-    
-    private Image image = null;
-    
-    private LocalDate date = LocalDate.now();
-    
-    private Category category = null;
     @FXML
-    private Button botonAddExpense;
+    private Button botonModify;
     @FXML
     private DatePicker dateField;
     @FXML
     private MenuButton categoryField;
-    
-    private String categoryTitle;
     @FXML
     private Label l1;
-    @FXML
-    private Button botonAddCategory;
-
+    
+    private Image image;
+    
+    private Charge charge;
+    
+    private Acount acount;
 
     /**
      * Initializes the controller class.
@@ -94,15 +83,28 @@ public class AnadirGastoController implements Initializable {
             });
         
         try {
-            getUserCategories();
+            List<Category> categories = acount.getUserCategories();
+            categories.forEach(category -> {
+                categoryField.getItems().add(new MenuItem(category.getName()));
+            });
+            categoryField.getItems().forEach(item -> {
+                item.setOnAction(event -> {
+                    categoryField.setText(item.getText());
+                    
+                    
+                });
+            });
+            
+            
         } catch (AcountDAOException ex) {
             Logger.getLogger(AnadirGastoController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
     }    
 
     @FXML
-    private void onAddExpense(ActionEvent event) throws AcountDAOException {
-        
+    private void modify(ActionEvent event) {
         boolean valid = true;
         
         
@@ -133,101 +135,31 @@ public class AnadirGastoController implements Initializable {
         }
         int unit = Integer.parseInt(s_unit);
         
-        if(category == null)
-            valid = false;
+        
         
         
         if(valid)
-            valid = acount.registerCharge(name, description, cost, unit, image, date, category);
+            valid = acount.registerCharge(name, description, cost, unit, image, dateField.getValue(), categoryField.getText());
         
-        if(valid){
-            switchTo("Inicio.fxml");
-        }else{
-            switchToMainMenuWithError();}
-
     }
 
     @FXML
     private void onCancel(ActionEvent event) {
-        switchTo("Inicio.fxml");
-        
     }
 
     @FXML
     private void getDate(ActionEvent event) {
-        date = dateField.getValue();
     }
-
-
-
-    private void getUserCategories() throws AcountDAOException{
-        
-        
-        List<Category> categories = acount.getUserCategories();
-        
-        if(categories.isEmpty()) {
-            botonAddExpense.disableProperty().set(true);
-            nameField.disableProperty().set(true);
-            descriptionField.disableProperty().set(true);
-            costField.disableProperty().set(true);
-            unitsField.disableProperty().set(true);
-            dateField.disableProperty().set(true);
-            categoryField.disableProperty().set(true);
-            l1.setText("Debes crear una categoria para tus gastos primero !! ");
-            
-            
-        } else {
-            categories.forEach(category -> {
-                categoryField.getItems().add(new MenuItem(category.getName()));
-            });
-            categoryField.getItems().forEach(item -> {
-                item.setOnAction(event -> {
-                    categoryField.setText(item.getText());
-                    categoryTitle = item.getText();
-                    getCategory();
-                });
-            });
-        }
-        
-    }
-
+ 
     
-    private void getCategory() {
-        try {
-            List<Category> categories = acount.getUserCategories();
-            category = categories.stream().filter(cat -> cat.getName().equals(categoryTitle)).findFirst().get();
-            
-        } catch (AcountDAOException ex) {
-            Logger.getLogger(AnadirGastoController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public void setCharge(Charge charge) {
+        this.charge = charge;
+        nameField.setText(charge.getName());
+        descriptionField.setText(charge.getDescription());
+        costField.setText(String.valueOf(charge.getCost()));
+        unitsField.setText(String.valueOf(charge.getUnits()));
+        dateField.setValue(charge.getDate());
+        categoryField.setText(charge.getCategory().getName());
+        image = charge.getImageScan();
     }
-
-    private void switchTo(String where) {
-        
-        Stage currentStage = (Stage) nameField.getScene().getWindow();
-        currentStage.close();
-        Stage stage = new Stage();
-        FXMLLoader fxmlloader = new FXMLLoader();
-
-            try {
-                Pane root = fxmlloader.load(getClass().getResource(where));
-                stage.setScene(new Scene(root, 600, 600));
-                stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
-    }
-
-    private void switchToMainMenuWithError() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @FXML
-    private void onAddCategory(ActionEvent event) throws IOException {
-        
-        switchTo("AnadirCategoria.fxml");
-    }
-
 }
-
