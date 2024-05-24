@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="javafxmlapplication.ModificarGastoController">
+   <children>
+      <Text layoutX="104.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modificar Gasto">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Text>
+      <TextField fx:id="nameField" layoutX="288.0" layoutY="116.0" />
+      <TextField fx:id="descriptionField" layoutX="290.0" layoutY="155.0" />
+      <TextField fx:id="costField" layoutX="290.0" layoutY="197.0" />
+      <TextField fx:id="unitsField" layoutX="290.0" layoutY="239.0" />
+      <Text layoutX="201.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+      <Text layoutX="201.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+      <Text layoutX="201.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="cost" />
+      <Text layoutX="201.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Units" />
+      <Text layoutX="200.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" />
+      <Text layoutX="205.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LocalDate" />
+      <Text layoutX="203.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" />
+      <Button fx:id="botonModify" layoutX="426.0" layoutY="363.0" mnemonicParsing="false" onAction="#modify" text="AnadirGasto" />
+      <Button layoutX="534.0" layoutY="363.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
+      <DatePicker fx:id="dateField" layoutX="278.0" layoutY="308.0" onAction="#getDate" promptText="Elegir fecha" />
+      <MenuButton fx:id="categoryField" layoutX="278.0" layoutY="341.0" mnemonicParsing="false" />
+      <Label fx:id="l1" layoutX="352.0" layoutY="45.0" textFill="#ff0303" />
+   </children>
+</AnchorPane>

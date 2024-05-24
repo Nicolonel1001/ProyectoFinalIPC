@@ -11,14 +11,22 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.Acount;
 import model.AcountDAOException;
 import model.Category;
@@ -49,6 +57,12 @@ public class MostrarController implements Initializable {
     private MenuButton filtroCategorias;
     
     private String categoria = "Todo";
+    @FXML
+    private Button botonBorrar;
+    @FXML
+    private Button botonModificar;
+    @FXML
+    private Button botonBack;
     
     
 
@@ -67,6 +81,29 @@ public class MostrarController implements Initializable {
         listOfMonthlyCharges.setCellFactory((c) -> {return new ChargeListCell();} );
         costListView.setCellFactory((c) -> {return new CostListCell();} );
          
+        
+        try {
+            List<Category> categories = acount.getUserCategories();
+            
+            filtroCategorias.getItems().clear();
+            filtroCategorias.getItems().add(new MenuItem("Todo"));
+            categories.forEach(category -> {
+                filtroCategorias.getItems().add(new MenuItem(category.getName()));});
+            
+            filtroCategorias.getItems().forEach(item -> {
+                item.setOnAction(event -> {
+                  filtroCategorias.setText(item.getText());
+                  updateView();
+              }); 
+            });
+           
+        } catch (AcountDAOException ex) {
+            Logger.getLogger(MostrarController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        botonBorrar.disableProperty().bind(Bindings.equal(-1, listOfMonthlyCharges.getSelectionModel().selectedIndexProperty()));
+        botonModificar.disableProperty().bind(Bindings.equal(-1, listOfMonthlyCharges.getSelectionModel().selectedIndexProperty()));
+        
         updateView();
         
  }    
@@ -82,24 +119,23 @@ public class MostrarController implements Initializable {
         date = date.minusMonths(1);
         updateView();
     }
+    
+       @FXML
+    private void decrementYear(ActionEvent event) {
+        date = date.minusYears(1);
+        updateView();
+    }
+
+    @FXML
+    private void incrementYear(ActionEvent event) {
+        date = date.plusYears(1);
+        updateView();
+    }
 
     private void updateView(){
-        try {
-            List<Category> categories = acount.getUserCategories();
-            
-            filtroCategorias.getItems().clear();
-            categories.forEach(category -> {
-                filtroCategorias.getItems().add(new MenuItem(category.getName()));});
-            
-            filtroCategorias.getItems().forEach(item -> {
-                item.setOnAction(event -> {
-                  filtroCategorias.setText(item.getText());
-              }); 
-            });
-           
-        } catch (AcountDAOException ex) {
-            Logger.getLogger(MostrarController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        
+        
         
         try {
             List<Charge> listOfCharges = acount.getUserCharges();
@@ -107,8 +143,13 @@ public class MostrarController implements Initializable {
             if(!listOfCharges.isEmpty()){
                 List<Charge> filteredList;
                
-                filteredList = listOfCharges.stream().filter(charge -> (charge.getDate().getMonth() == date.getMonth()) && (charge.getDate().getYear() == date.getYear())).filter(c -> c != null).toList();
-               
+                if(filtroCategorias.getText().equals("Todo")){
+                    filteredList = listOfCharges.stream().filter(charge -> (charge.getDate().getMonth() == date.getMonth()) && (charge.getDate().getYear() == date.getYear())).toList();
+                }else{
+                    filteredList = listOfCharges.stream().filter(charge -> (charge.getDate().getMonth() == date.getMonth()) && (charge.getDate().getYear() == date.getYear()) && (filtroCategorias.getText().equals(charge.getCategory().getName()))).toList();
+                }
+                System.out.println(filtroCategorias.getText());
+                System.out.println(filteredList);
                 listOfMonthlyCharges.getItems().clear();
                 listOfMonthlyCharges.getItems().addAll(filteredList); 
                 costListView.getItems().clear();
@@ -131,6 +172,52 @@ public class MostrarController implements Initializable {
         Month_Year.setText(sb.toString());
     
     }
+
+    @FXML
+    private void onDelete(ActionEvent event) throws AcountDAOException {
+        Charge charge = listOfMonthlyCharges.getSelectionModel().getSelectedItem();
+        acount.removeCharge(charge);
+        updateView();
+    }
+
+    @FXML
+    private void onModify(ActionEvent event) throws IOException {
+        Charge charge = listOfMonthlyCharges.getSelectionModel().getSelectedItem();
+        
+        FXMLLoader loader= new  FXMLLoader(getClass().getResource("ModificarGasto.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root, 600, 400);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Modificar un cargo");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        
+        ModificarGastoController controller = (ModificarGastoController)loader.getController();
+        controller.setCharge(charge);
+        
+        //la ventana se muestra modal
+        stage.show();
+    }
+
+    @FXML
+    private void onBack(ActionEvent event) {
+        Stage currentStage = (Stage)botonBorrar.getScene().getWindow();
+        currentStage.close();
+        Stage stage = new Stage();
+        FXMLLoader fxmlloader = new FXMLLoader();
+
+            try {
+                Pane root = fxmlloader.load(getClass().getResource("Inicio.fxml"));
+                stage.setScene(new Scene(root, 600, 400));
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+    }
+    
+
+ 
 
    
 }

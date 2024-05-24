@@ -9,25 +9,27 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.MostrarController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.MostrarController">
     <stylesheets>
         <URL value="@mostrar.css" />
     </stylesheets>
     <children>
       <ListView fx:id="listOfMonthlyCharges" layoutX="31.0" layoutY="122.0" prefHeight="236.0" prefWidth="166.0" />
-      <Label fx:id="Month_Year" layoutX="140.0" layoutY="73.0" text="Month-Year">
-         <padding>
-            <Insets left="6.0" top="5.0" />
-         </padding></Label>
-      <Button id="NM" layoutX="235.0" layoutY="69.0" mnemonicParsing="false" onAction="#incrementMonth" text="Next" />
+      <Label fx:id="Month_Year" layoutX="140.0" layoutY="73.0" text="Month-Year" />
+      <Button id="NM" focusTraversable="false" layoutX="243.0" layoutY="69.0" mnemonicParsing="false" onAction="#incrementMonth" text="Next" />
       <Button id="PM" layoutX="59.0" layoutY="69.0" mnemonicParsing="false" onAction="#decrementMonth" text="Previous" />
-      <ListView fx:id="costListView" layoutX="200.0" layoutY="122.0" prefHeight="236.0" prefWidth="52.0" />
+      <ListView fx:id="costListView" disable="true" focusTraversable="false" layoutX="197.0" layoutY="122.0" prefHeight="236.0" prefWidth="52.0" />
       <Label layoutX="263.0" layoutY="329.0" prefHeight="26.0" prefWidth="64.0" text="TOTAL" />
       <Label fx:id="precioTotal" layoutX="313.0" layoutY="334.0" text="\$$$" />
-      <MenuButton id="MBM" fx:id="filtroCategorias" layoutX="264.0" layoutY="122.0" mnemonicParsing="false" text="MenuButton" textFill="WHITE">
+      <MenuButton id="MBM" fx:id="filtroCategorias" layoutX="264.0" layoutY="122.0" mnemonicParsing="false" text="todo" textFill="WHITE">
         <items>
           <MenuItem mnemonicParsing="false" text="Todas" />
         </items>
       </MenuButton>
+      <Button layoutX="59.0" layoutY="33.0" mnemonicParsing="false" onAction="#decrementYear" text="Previous" />
+      <Button layoutX="242.0" layoutY="33.0" mnemonicParsing="false" onAction="#incrementYear" text="Next" />
+      <Button fx:id="botonBorrar" layoutX="368.0" layoutY="188.0" mnemonicParsing="false" onAction="#onDelete" text="Borrar" />
+      <Button fx:id="botonModificar" layoutX="354.0" layoutY="240.0" mnemonicParsing="false" onAction="#onModify" text="Modificar" />
+      <Button fx:id="botonBack" layoutX="489.0" layoutY="330.0" mnemonicParsing="false" onAction="#onBack" text="Back" />
    </children>
 </AnchorPane>

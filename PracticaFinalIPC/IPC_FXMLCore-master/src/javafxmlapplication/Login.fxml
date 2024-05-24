@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.LoginController">
     <stylesheets>
         <URL value="@login.css" />
     </stylesheets>
@@ -22,7 +22,7 @@
                      <HBox.margin>
                         <Insets top="6.0" />
                      </HBox.margin></Text>
-                  <PasswordField id="P1" prefHeight="39.0" prefWidth="172.0">
+                  <PasswordField id="P1" fx:id="Nickname" prefHeight="39.0" prefWidth="172.0">
                      <HBox.margin>
                         <Insets left="-50.0" />
                      </HBox.margin>
@@ -35,7 +35,7 @@
                      <HBox.margin>
                         <Insets top="6.0" />
                      </HBox.margin></Text>
-                  <PasswordField id="P2" prefHeight="39.0" prefWidth="290.0">
+                  <PasswordField id="P2" fx:id="Password" prefHeight="39.0" prefWidth="290.0">
                      <HBox.margin>
                         <Insets left="120.0" />
                      </HBox.margin>

@@ -11,8 +11,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Acount;
 import model.AcountDAOException;
@@ -47,9 +50,7 @@ public class AnadirCategoriaController implements Initializable {
 
     @FXML
     private void onCancelar(ActionEvent event) {
-        Stage stage = (Stage) this.categoryName.getScene().getWindow();
-        
-        stage.close();
+        switchTo("AnadirGasto.fxml");
     }
 
     @FXML
@@ -67,14 +68,26 @@ public class AnadirCategoriaController implements Initializable {
             valid = false;
         
         if(valid)
-            valid = acount.registerCategory(nombre, descripcion);
-        
-        if(valid) {
-            Stage stage = (Stage) this.categoryName.getScene().getWindow();
-            stage.close();
-        } else {
-            //TODO DIALOGO DE ERROR + RETURN A PAGINA ANTERIOR
+        {
+            acount.registerCategory(nombre, descripcion);
+            switchTo("AnadirGasto.fxml");
         }
+    }
+    
+    private void switchTo(String where) {
+            
+            Stage currentStage = (Stage) categoryName.getScene().getWindow();
+            currentStage.close();
+            Stage stage = new Stage();
+            FXMLLoader fxmlloader = new FXMLLoader();
+
+            try {
+                Pane root = fxmlloader.load(getClass().getResource(where));
+                stage.setScene(new Scene(root, 600, 600));
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
     
 }
