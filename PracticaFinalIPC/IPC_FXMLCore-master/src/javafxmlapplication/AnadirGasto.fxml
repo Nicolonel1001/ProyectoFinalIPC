@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -8,11 +9,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<?import java.net.URL?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.AnadirGastoController">
+<AnchorPane id="AnchorPane" prefHeight="417.0" prefWidth="609.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.AnadirGastoController">
     <stylesheets>
-        <URL value="@ana" />
+        <URL value="@anadirGasto.css" />
     </stylesheets>
     <children>
       <Text layoutX="94.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anadir Gasto">
@@ -20,22 +20,22 @@
             <Font size="23.0" />
          </font>
       </Text>
-      <TextField fx:id="nameField" layoutX="278.0" layoutY="106.0" />
-      <TextField fx:id="descriptionField" layoutX="280.0" layoutY="145.0" />
+      <TextField fx:id="nameField" layoutX="280.0" layoutY="106.0" prefHeight="31.0" prefWidth="187.0" />
+      <TextField fx:id="descriptionField" layoutX="280.0" layoutY="145.0" prefHeight="31.0" prefWidth="187.0" />
       <TextField fx:id="costField" layoutX="280.0" layoutY="187.0" />
       <TextField fx:id="unitsField" layoutX="280.0" layoutY="229.0" />
-      <Text layoutX="191.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-      <Text layoutX="191.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
-      <Text layoutX="191.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="cost" />
-      <Text layoutX="191.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Units" />
-      <Text layoutX="190.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" />
-      <Text layoutX="195.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LocalDate" />
-      <Text layoutX="193.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" />
-      <Button fx:id="botonAddExpense" layoutX="416.0" layoutY="353.0" mnemonicParsing="false" onAction="#onAddExpense" text="AnadirGasto" />
-      <Button layoutX="524.0" layoutY="353.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
-      <DatePicker fx:id="dateField" layoutX="268.0" layoutY="298.0" onAction="#getDate" promptText="Elegir fecha" />
-      <MenuButton fx:id="categoryField" layoutX="268.0" layoutY="331.0" mnemonicParsing="false" />
+      <Text layoutX="190.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+      <Text layoutX="180.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+      <Text layoutX="195.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cost" />
+      <Text layoutX="193.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Units" />
+      <Text layoutX="106.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" />
+      <Text layoutX="94.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LocalDate" />
+      <Text layoutX="97.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" />
+      <Button id="AGG" fx:id="botonAddExpense" layoutX="410.0" layoutY="353.0" mnemonicParsing="false" onAction="#onAddExpense" text="AnadirGasto" />
+      <Button id="CAG" layoutX="524.0" layoutY="353.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
+      <DatePicker fx:id="dateField" layoutX="182.0" layoutY="298.0" onAction="#getDate" promptText="Elegir fecha" />
+      <MenuButton fx:id="categoryField" layoutX="321.0" layoutY="338.0" mnemonicParsing="false" />
       <Label fx:id="l1" layoutX="342.0" layoutY="35.0" textFill="#ff0303" />
-      <Button fx:id="botonAddCategory" layoutX="471.0" layoutY="298.0" mnemonicParsing="false" onAction="#onAddCategory" text="Anadir Categoria" />
+      <Button fx:id="botonAddCategory" layoutX="189.0" layoutY="338.0" mnemonicParsing="false" onAction="#onAddCategory" text="Anadir Categoria" />
    </children>
 </AnchorPane>
