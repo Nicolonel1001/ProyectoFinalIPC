@@ -9,8 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="javafxmlapplication.ModificarGastoController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.ModificarGastoController">
    <children>
       <Text layoutX="104.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modificar Gasto">
          <font>
@@ -28,7 +27,7 @@
       <Text layoutX="200.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" />
       <Text layoutX="205.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LocalDate" />
       <Text layoutX="203.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" />
-      <Button fx:id="botonModify" layoutX="426.0" layoutY="363.0" mnemonicParsing="false" onAction="#modify" text="AnadirGasto" />
+      <Button fx:id="botonModify" layoutX="426.0" layoutY="363.0" mnemonicParsing="false" onAction="#modify" text="Confirmar" />
       <Button layoutX="534.0" layoutY="363.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
       <DatePicker fx:id="dateField" layoutX="278.0" layoutY="308.0" onAction="#getDate" promptText="Elegir fecha" />
       <MenuButton fx:id="categoryField" layoutX="278.0" layoutY="341.0" mnemonicParsing="false" />

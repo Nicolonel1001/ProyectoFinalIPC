@@ -13,7 +13,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
@@ -22,6 +24,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Acount;
 import model.AcountDAOException;
@@ -52,11 +55,13 @@ public class ModificarGastoController implements Initializable {
     @FXML
     private Label l1;
     
-    private Image image;
+    private Image image = null;
     
     private Charge charge;
     
     private Acount acount;
+    
+    private Category category;
 
     /**
      * Initializes the controller class.
@@ -104,7 +109,7 @@ public class ModificarGastoController implements Initializable {
     }    
 
     @FXML
-    private void modify(ActionEvent event) {
+    private void modify(ActionEvent event) throws AcountDAOException {
         boolean valid = true;
         
         
@@ -122,7 +127,7 @@ public class ModificarGastoController implements Initializable {
             valid = false;
         
         //verificar que costo son solo digitos
-        if (!s_cost.matches("\\d*")){
+        if (!isNumeric(s_cost)){
             //TODO cambiar color texto
             valid = false;
         }
@@ -135,16 +140,29 @@ public class ModificarGastoController implements Initializable {
         }
         int unit = Integer.parseInt(s_unit);
         
-        
-        
-        
-        if(valid)
-            valid = acount.registerCharge(name, description, cost, unit, image, dateField.getValue(), categoryField.getText());
-        
+       
+        if(valid){
+            
+            acount.removeCharge(charge);
+            getCategory();
+            System.out.println(image);
+            
+            
+            if(image.errorProperty().get()){
+                acount.registerCharge(name, description, cost, unit, null, dateField.getValue(), category);
+            } else {
+                acount.registerCharge(name, description, cost, unit, image, dateField.getValue(), category);
+            }
+            
+        Stage currentStage = (Stage) nameField.getScene().getWindow();
+        currentStage.close();           
+}
     }
 
     @FXML
     private void onCancel(ActionEvent event) {
+        Stage currentStage = (Stage) nameField.getScene().getWindow();
+        currentStage.close();
     }
 
     @FXML
@@ -161,5 +179,30 @@ public class ModificarGastoController implements Initializable {
         dateField.setValue(charge.getDate());
         categoryField.setText(charge.getCategory().getName());
         image = charge.getImageScan();
+        
     }
+
+    private void getCategory() {
+
+        try {
+            List<Category> categories = acount.getUserCategories();
+            category = categories.stream().filter(cat -> cat.getName().equals(categoryField.getText())).findFirst().get();
+            
+        } catch (AcountDAOException ex) {
+            Logger.getLogger(AnadirGastoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    private boolean isNumeric(String strNum) {
+    if (strNum == null) {
+        return false;
+    }
+    try {
+        double d = Double.parseDouble(strNum);
+    } catch (NumberFormatException nfe) {
+        return false;
+    }
+    return true;
+}
 }
