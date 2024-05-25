@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -21,7 +20,7 @@
       <ListView fx:id="costListView" disable="true" focusTraversable="false" layoutX="197.0" layoutY="122.0" prefHeight="236.0" prefWidth="52.0" />
       <Label layoutX="263.0" layoutY="329.0" prefHeight="26.0" prefWidth="64.0" text="TOTAL" />
       <Label fx:id="precioTotal" layoutX="313.0" layoutY="334.0" text="\$$$" />
-      <MenuButton id="MBM" fx:id="filtroCategorias" layoutX="264.0" layoutY="122.0" mnemonicParsing="false" text="todo" textFill="WHITE">
+      <MenuButton id="MBM" fx:id="filtroCategorias" layoutX="264.0" layoutY="122.0" mnemonicParsing="false" text="Todo" textFill="WHITE">
         <items>
           <MenuItem mnemonicParsing="false" text="Todas" />
         </items>

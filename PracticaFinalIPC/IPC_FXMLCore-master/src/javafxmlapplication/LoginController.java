@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -55,6 +56,9 @@ public class LoginController implements Initializable {
 
     @FXML
     private void loginAction(ActionEvent event) {
+        
+        
+        
         textoDeError.setText("");
         try {
             if(!acount.logInUserByCredentials(Nickname.getText().strip(), Password.getText().strip())){
@@ -82,6 +86,26 @@ public class LoginController implements Initializable {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+}
+
+    @FXML
+    private void onBack(ActionEvent event) throws IOException {
+        
+        
+        Stage currentStage = (Stage)textoDeError.getScene().getWindow();
+        currentStage.close();
+        Stage stage = new Stage();
+        FXMLLoader fxmlloader = new FXMLLoader();
+
+            try {
+                Pane root = fxmlloader.load(getClass().getResource("PaginaPrincipal.fxml"));
+                stage.setScene(new Scene(root, 600, 600));
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+       
 }
     
 }

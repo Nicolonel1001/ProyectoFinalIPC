@@ -152,5 +152,21 @@ public class RegisterController implements Initializable {
         
         
     }
+
+    @FXML
+    private void onBack(ActionEvent event) {
+        try {
+            Stage currentStage = (Stage)textoDeError.getScene().getWindow();
+            currentStage.close();
+            
+            Stage stage = new Stage();
+            FXMLLoader fxmlloader = new FXMLLoader();
+            Pane root = fxmlloader.load(getClass().getResource("PaginaPrincipal.fxml"));
+            stage.setScene(new Scene(root, 600, 600));
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }
