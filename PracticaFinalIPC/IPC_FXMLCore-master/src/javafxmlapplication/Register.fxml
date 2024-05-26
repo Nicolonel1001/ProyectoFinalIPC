@@ -57,11 +57,6 @@
                   </TextField>
                </children>
             </HBox>
-            <HBox prefHeight="70.0" prefWidth="200.0" spacing="100.0">
-               <children>
-                  <Text id="FP" strokeType="OUTSIDE" strokeWidth="0.0" text="Foto de perfil" />
-               </children>
-            </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Text fx:id="textoDeError" fill="#f40b0b" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" textOrigin="CENTER" />

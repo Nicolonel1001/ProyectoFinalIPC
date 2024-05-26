@@ -13,7 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -45,67 +44,52 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            // TODO
             acount = Acount.getInstance();
-        } catch (AcountDAOException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } catch (AcountDAOException | IOException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
 
     @FXML
     private void loginAction(ActionEvent event) {
-        
-        
-        
         textoDeError.setText("");
+        String nickname = Nickname.getText().strip();
+        String password = Password.getText().strip();
+        System.out.println("Attempting to log in with nickname: " + nickname + " and password: " + password); // Debugging
+
         try {
-            if(!acount.logInUserByCredentials(Nickname.getText().strip(), Password.getText().strip())){
+            if (!acount.logInUserByCredentials(nickname, password)) {
                 textoDeError.setText("Credentials not found");
             } else {
-                
-                
-            Stage currentStage = (Stage)textoDeError.getScene().getWindow();
-            currentStage.close();
-            Stage stage = new Stage();
-            FXMLLoader fxmlloader = new FXMLLoader();
-            
-                try {
-                    Pane root = fxmlloader.load(getClass().getResource("Inicio.fxml"));
-                    stage.setScene(new Scene(root, 600, 600));
-                    stage.show();
-                } catch (IOException ex) {
-                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            
-                
-                
-            }   
-        } catch (AcountDAOException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-}
-
-    @FXML
-    private void onBack(ActionEvent event) throws IOException {
-        
-        
-        Stage currentStage = (Stage)textoDeError.getScene().getWindow();
-        currentStage.close();
-        Stage stage = new Stage();
-        FXMLLoader fxmlloader = new FXMLLoader();
-
-            try {
-                Pane root = fxmlloader.load(getClass().getResource("PaginaPrincipal.fxml"));
+                System.out.println("Login successful!"); // Debugging
+                Stage currentStage = (Stage) textoDeError.getScene().getWindow();
+                currentStage.close();
+                Stage stage = new Stage();
+                FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("Inicio.fxml"));
+                Pane root = fxmlloader.load();
                 stage.setScene(new Scene(root, 600, 600));
                 stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } catch (AcountDAOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            textoDeError.setText("Ocurrió un error al intentar iniciar sesión.");
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-       
-}
-    
+    @FXML
+    private void onBack(ActionEvent event) {
+        Stage currentStage = (Stage) textoDeError.getScene().getWindow();
+        currentStage.close();
+        Stage stage = new Stage();
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("PaginaPrincipal.fxml"));
+        try {
+            Pane root = fxmlloader.load();
+            stage.setScene(new Scene(root, 600, 600));
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

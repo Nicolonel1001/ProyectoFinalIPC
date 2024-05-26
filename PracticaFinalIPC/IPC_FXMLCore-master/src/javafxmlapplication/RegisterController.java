@@ -4,7 +4,6 @@
  */
 package javafxmlapplication;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -20,9 +19,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -46,7 +42,6 @@ public class RegisterController implements Initializable {
     private TextField Nombre;
     @FXML
     private TextField Nickname;
-    private ImageView profilePicture;
     
     private boolean validated = false;
     @FXML
@@ -75,67 +70,51 @@ public class RegisterController implements Initializable {
         String password = Password.getText().strip();
         String correo = Correo.getText().strip();
         LocalDate date = LocalDate.now();
-        File file = new File("C:\\Users\\nicon\\Desktop\\ProyectoFinalIPC\\PracticaFinalIPC\\IPC_FXMLCore-master\\src\\Imagenes\\Iconos\\nopp.jpg");
-        Image image = new Image(file.toURI().toString());
         
         textoDeError.setText("");
         validated = false;
         
         if (nickname.contains(" "))
             textoDeError.setText("Nickname cannot contain spaces!");
-        
-        for(int i = 0; i < password.length(); i++) {
-            if (!Character.isAlphabetic(password.charAt(i))){
-                textoDeError.setText("Password must contain only alphanumeric characters !");
-            }
-                
-        }
-        
         if (password.length() <= 6)
             textoDeError.setText("Su contrasena deber tener al menos 7 caracteres !");
         
+        // Verificar la longitud del password
+        if (password.length() <= 6) {
+            textoDeError.setText("Su contraseña debe tener al menos 7 caracteres !");
+        }
+
+        // Verificar si el password contiene solo caracteres alfanuméricos
+        for (int i = 0; i < password.length(); i++) {
+            if (!Character.isLetterOrDigit(password.charAt(i))) {
+                textoDeError.setText("La contraseña debe contener solo caracteres alfanuméricos !");
+                return; // Salir del método si se encuentra un carácter no alfanumérico
+            }
+        }
         if(password.length() == 0 || name.length() == 0 || nickname.length() == 0 || correo.length() == 0)
-            textoDeError.setText("You must fill in all the form !");
+            textoDeError.setText("Debe completar todos los campos !");
         
         if(textoDeError.getText().equals("")) { // Si no hay errores, intentar registrarse
             try {
-                validated =
-                        acount.registerUser(name, nickname, name, correo, password, image, date);
+                validated = acount.registerUser(name, nickname, name, correo, password, null, date);
             } catch (AcountDAOException ex) {
                 Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             if(!validated) { 
-                textoDeError.setText("Unsuccessfull register !");
+                textoDeError.setText("Ya tienes una cuenta con nosotros !");
             } else {
                 createSuccessfullAlert();
             }
         }
-        
-        
-    
     }
 
-    private void changeProfilePicture(ActionEvent event) {
-    //TODO
-    System.out.println("change profile picture");
-    
-    Alert alert = new Alert(AlertType.INFORMATION);
-    alert.setTitle("Cambiar foto de perfil");
-    alert.setHeaderText("Selecciona tu foto de perfil");
-    
-//TODO cambiar foto de perfil
-//alert.getDialogPane().setContent();
-    }
-    
     private void createSuccessfullAlert() {
-        
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Register done");
         alert.setHeaderText(null);
         alert.setContentText("You now have to login to use the application !");
         alert.showAndWait();
-        
         
         try {
             Stage currentStage = (Stage)textoDeError.getScene().getWindow();
@@ -149,8 +128,6 @@ public class RegisterController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
     }
 
     @FXML
@@ -168,5 +145,4 @@ public class RegisterController implements Initializable {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 }
