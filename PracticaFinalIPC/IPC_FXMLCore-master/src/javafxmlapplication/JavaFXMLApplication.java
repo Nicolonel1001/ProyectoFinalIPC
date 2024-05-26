@@ -20,11 +20,11 @@ public class JavaFXMLApplication extends Application {
     public void start(Stage stage) throws Exception {
         //======================================================================
         // 1- creación del grafo de escena a partir del fichero FXML
-        FXMLLoader loader= new  FXMLLoader(getClass().getResource("AnadirGasto.fxml"));
+        FXMLLoader loader= new  FXMLLoader(getClass().getResource("PaginaPrincipal.fxml"));
         Parent root = loader.load();
         //======================================================================
         // 2- creación de la escena con el nodo raiz del grafo de escena
-        scene = new Scene(root, 600, 600);
+        scene = new Scene(root, 600, 400);
         //======================================================================
         // 3- asiganación de la escena al Stage que recibe el metodo 
         //     - configuracion del stage
