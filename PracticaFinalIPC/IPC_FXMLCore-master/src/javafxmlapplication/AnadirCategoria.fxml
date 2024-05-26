@@ -37,7 +37,7 @@
             </HBox>
          </children>
       </VBox>
-      <Button layoutX="507.0" layoutY="340.0" mnemonicParsing="false" onAction="#onCancelar" text="Cancelar" />
-      <Button layoutX="434.0" layoutY="341.0" mnemonicParsing="false" onAction="#onCrear" text="Crear" />
+      <Button layoutX="507.0" layoutY="340.0" mnemonicParsing="false" onAction="#onCancelar" style="-fx-background-color: lightblue;" text="Cancelar" />
+      <Button layoutX="434.0" layoutY="341.0" mnemonicParsing="false" onAction="#onCrear" style="-fx-background-color: lightblue;" text="Crear" />
    </children>
 </AnchorPane>
