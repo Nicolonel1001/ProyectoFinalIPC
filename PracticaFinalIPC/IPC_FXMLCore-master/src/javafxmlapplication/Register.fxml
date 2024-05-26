@@ -20,7 +20,7 @@
             <HBox prefHeight="70.0" prefWidth="200.0" spacing="100.0">
                <children>
                   <Text id="NOM" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
-                  <TextField>
+                  <TextField fx:id="Nombre">
                      <HBox.margin>
                         <Insets left="17.0" />
                      </HBox.margin>
@@ -30,7 +30,7 @@
             <HBox prefHeight="70.0" prefWidth="200.0" spacing="100.0">
                <children>
                   <Text id="NICK" strokeType="OUTSIDE" strokeWidth="0.0" text="Nickname" />
-                  <TextField>
+                  <TextField fx:id="Nickname">
                      <HBox.margin>
                         <Insets left="2.0" />
                      </HBox.margin>
@@ -50,7 +50,7 @@
             <HBox prefHeight="70.0" prefWidth="200.0" spacing="100.0">
                <children>
                   <Text id="COR" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo" />
-                  <TextField prefHeight="0.0" prefWidth="164.0">
+                  <TextField fx:id="Correo" prefHeight="0.0" prefWidth="164.0">
                      <HBox.margin>
                         <Insets left="30.0" />
                      </HBox.margin>
