@@ -1,14 +1,6 @@
 /*
  * Empty Stylesheet file.
  */
-
-.root{
-    -fx-margin: 0;
-    -fx-padding: 0;
-    -fx-background-color:linear-gradient(from 0% 0% to 100% 100%, #6C3483, #58D68D);
-}
-
-
 #P1 {
     -fx-border-color: dodgerblue;
     -fx-border-width: 3px;
@@ -44,5 +36,7 @@
     -fx-font-size: 26px;
 }
 .mainFxmlClass {
-    
+    -fx-margin: 0;
+    -fx-padding: 0;
+    -fx-background-color:linear-gradient(from 0% 0% to 100% 100%, #6C3483, #58D68D);
 }
