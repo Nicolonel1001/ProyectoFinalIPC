@@ -35,11 +35,15 @@
     -fx-border-width: 5px;
     }
 
-.mainFxmlClass {
-    
-}
+    .mainFxmlClass {
 
-#CUENTAGASTOS{
-    -fx-background-color:linear-gradient(from 0% 0% to 100% 100%, #6C3483, #58D68D);
-}
+    }
+
+    #CUENTAGASTOS{
+        -fx-background-color:linear-gradient(from 0% 0% to 100% 100%, #6C3483, #58D68D);
+    }
+
+    #B3, #B4{
+        -fx-text-fill:white;
+    }
 
