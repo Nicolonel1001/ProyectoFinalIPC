@@ -15,18 +15,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="415.0" prefWidth="606.0" style="-fx-background-color: lightgreen;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.PaginaPrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="415.0" prefWidth="606.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.PaginaPrincipalController">
     <stylesheets>
         <URL value="@paginaprincipal.css" />
     </stylesheets>
    <children>
-      <TextField editable="false" layoutY="-1.0" prefHeight="54.0" prefWidth="241.0" text="    CUENTA DE GASTOS">
+      <TextField id="CUENTAGASTOS" editable="false" layoutY="-1.0" prefHeight="54.0" prefWidth="241.0" text="CUENTA DE GASTOS">
          <effect>
             <ColorAdjust />
          </effect>
       </TextField>
-      <Button id="B1" fx:id="boton" contentDisplay="BOTTOM" layoutX="366.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToLogin" text="Iniciar sesión" />
-      <Button id="B2" layoutX="477.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToRegister" text="Registarse" />
+      <Button id="B1" fx:id="boton" contentDisplay="BOTTOM" layoutX="366.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToLogin" style="-fx-background-color: lightblue;" text="Iniciar sesión" />
+      <Button id="B2" layoutX="477.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToRegister" style="-fx-background-color: lightblue;" text="Registarse" />
       <ImageView fitHeight="40.0" fitWidth="44.0" layoutX="172.0" layoutY="6.0">
          <image>
             <Image url="@../../../../../../../Downloads/euros.png" />
@@ -49,8 +49,13 @@
       </HBox>
       <MenuButton layoutX="234.0" layoutY="12.0" mnemonicParsing="false" popupSide="TOP" prefHeight="28.0" prefWidth="87.0" style="-fx-background-color: lightgreen;" text="ESPAÑA" textOverrun="WORD_ELLIPSIS">
         <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
+          <MenuItem mnemonicParsing="false" text="ESPAÑA" />
+          <MenuItem mnemonicParsing="false" text="USA" />
+          <MenuItem mnemonicParsing="false" text="FRANCIA" />
+          <MenuItem mnemonicParsing="false" text="INGLATERRA" />
+          <MenuItem mnemonicParsing="false" text="ASIA" />
+          <MenuItem mnemonicParsing="false" text="LATINO AMERICA" />
+          <MenuItem mnemonicParsing="false" text="OCEANIA" />
         </items>
       </MenuButton>
       <HBox layoutX="28.0" layoutY="293.0" prefHeight="100.0" prefWidth="265.0">
@@ -63,7 +68,7 @@
                   <Insets left="15.0" top="30.0" />
                </HBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" style="-fx-background-color: black;" text="AppStore">
+            <Button id="B3" mnemonicParsing="false" style="-fx-background-color: black;" text="AppStore">
                <HBox.margin>
                   <Insets top="30.0" />
                </HBox.margin>
@@ -76,7 +81,7 @@
                   <Insets left="20.0" right="-40.0" top="30.0" />
                </HBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" style="-fx-background-color: black;" text="GooglePlay">
+            <Button id="B4" mnemonicParsing="false" style="-fx-background-color: black;" text="GooglePlay">
                <HBox.margin>
                   <Insets left="40.0" top="30.0" />
                </HBox.margin>
