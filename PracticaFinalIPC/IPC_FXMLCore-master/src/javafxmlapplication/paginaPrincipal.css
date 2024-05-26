@@ -1,7 +1,45 @@
 /*
  * Empty Stylesheet file.
  */
+    .root{
+    -fx-margin: 0;
+    -fx-padding: 0;
+    -fx-background-color:linear-gradient(from 0% 0% to 100% 100%, #6C3483, #58D68D);
+    }
+
+
+   #X1{
+        -fx-font-size: 40px;
+        -fx-text-align: left;
+        
+    }
+    
+    #X2{
+        -fx-text-align: justify;
+    }
+    
+    #B1{
+    -fx-hgap: 30px;
+    -fx-background-radius: 40px;
+    -fx-font-family: "helvetica";
+    -fx-border-radius: 40px;
+    -fx-border-width: 5px;
+
+    }
+    
+     #B2{
+    -fx-hgap: 30px;
+    -fx-background-radius: 40px;
+    -fx-font-family: "helvetica";
+    -fx-border-radius: 40px;
+    -fx-border-width: 5px;
+    }
 
 .mainFxmlClass {
     
 }
+
+#CUENTAGASTOS{
+    -fx-background-color:linear-gradient(from 0% 0% to 100% 100%, #6C3483, #58D68D);
+}
+
