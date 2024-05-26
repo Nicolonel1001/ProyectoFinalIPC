@@ -196,7 +196,8 @@ public class MostrarController implements Initializable {
         controller.setCharge(charge);
         
         //la ventana se muestra modal
-        stage.show();
+        stage.showAndWait();
+        updateView();
     }
 
     @FXML

@@ -16,7 +16,7 @@
             <HBox prefHeight="70.0" prefWidth="200.0" spacing="100.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
-                  <TextField id="Nickname" fx:id="Nombre" alignment="CENTER_RIGHT" cache="true" centerShape="false" prefHeight="26.0" prefWidth="167.0">
+                  <TextField id="Nickname" fx:id="Nombre" cache="true" centerShape="false" prefHeight="26.0" prefWidth="167.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -26,7 +26,7 @@
             <HBox prefHeight="70.0" prefWidth="200.0" spacing="100.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nickname" />
-                  <TextField id="Nickname" fx:id="Nickname" alignment="CENTER_RIGHT" cache="true" centerShape="false" prefHeight="26.0" prefWidth="167.0">
+                  <TextField id="Nickname" fx:id="Nickname" cache="true" centerShape="false" prefHeight="26.0" prefWidth="167.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -68,6 +68,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
+                  <Button mnemonicParsing="false" onAction="#onBack" text="Back" />
                   <Button mnemonicParsing="false" onAction="#registerAction" text="Register" />
                </children>
             </HBox>
